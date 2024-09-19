@@ -1,0 +1,138 @@
+﻿@model COADto
+<div class="page-header">
+    <div class="page-title">
+        <h4>@(ViewBag.NameOfForm)</h4>
+        <h6>Update @(ViewBag.NameOfForm)</h6>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="CoatypeId">Select Users</label>
+                        <select class="form-control userSelect" asp-for="CoatypeId" asp-items="@(new SelectList(Model.CoatypeDtoList, "Id", "CoatypeName"))">
+                        </select>
+                        <span asp-validation-for="CoatypeId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="Code">Code</label>
+                        <input type="text" class="form-control" asp-for="Code" disabled>
+                        <span asp-validation-for="Code" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="AccountCode">Account Code</label>
+                        <input type="text" class="form-control" asp-for="AccountCode" disabled>
+                        <span asp-validation-for="AccountCode" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="AccountName">Account Name</label>
+                        <input type="text" class="form-control" asp-for="AccountName">
+                        <span asp-validation-for="AccountName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="ParentAccountId">Parent COA</label>
+                        <select class="form-control userSelect" asp-for="ParentAccountId" asp-items="@(new SelectList(Model.COADtoList, "Id", "AccountName"))">
+                            <option selected value="0">--- Select ---</option>
+                        </select>
+                        <span asp-validation-for="ParentAccountId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="Debit">Debit</label>
+                        <input type="text" class="form-control" asp-for="Debit">
+                        <span asp-validation-for="Debit" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="Credit">Credit</label>
+                        <input type="text" class="form-control" asp-for="Credit">
+                        <span asp-validation-for="Credit" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="ParentAccountId">Transaction Type</label>
+                        <select asp-for="CoaTranType" class="form-control userSelect" asp-items="Model.CoaTransactionTypeList"></select>
+                        <span asp-validation-for="ParentAccountId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="BusinessCategoryId">Select BusinessCategory</label>
+                        <select asp-for="BusinessCategoryId" class="form-control userSelect" asp-items="@(new SelectList(Model.BusinessCategoryList, "Id", "Name"))"></select>
+                        <span asp-validation-for="BusinessCategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="LevelNo">LevelNo</label>
+                        <input type="text" class="form-control" asp-for="LevelNo">
+                        <span asp-validation-for="LevelNo" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="OpeningBlnc">OpeningBlnc</label>
+                        <input type="text" class="form-control" asp-for="OpeningBlnc">
+                        <span asp-validation-for="OpeningBlnc" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="OpeningBlncDate">OpeningBlncDate</label>
+                        <input type="text" class="form-control" asp-for="OpeningBlncDate">
+                        <span asp-validation-for="OpeningBlncDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <input type="text" class="form-control" asp-for="Description">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="Transable">Description</label>
+                        @if(Model.Transable == true){
+                            <input type="checkbox" id="Transable" name="Transable" value="true" checked>
+                        }
+                        else
+                        {
+                            <input type="checkbox" id="Transable" name="Transable" value="true">
+                        }
+                        <input name="Transable" type="hidden" value="false">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <button class="btn btn-submit me-2">Submit</button>
+                    <a asp-action="Index" class="btn btn-cancel">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('.userSelect').select2();
+        });
+    </script>
+}

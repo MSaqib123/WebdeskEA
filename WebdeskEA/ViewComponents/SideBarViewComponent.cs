@@ -1,0 +1,52 @@
+﻿using WebdeskEA.Domain.RepositoryDapper.IRepository;
+using WebdeskEA.Models.MappingModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+namespace WebdeskEA.ViewComponents
+{
+    [Authorize]
+    public class SideBarViewComponent : ViewComponent
+    {
+        private readonly IModuleRepository _ModuleRepo;
+
+        public SideBarViewComponent(IModuleRepository ModuleRepo)
+        {
+            _ModuleRepo = ModuleRepo;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var claimsPrincipal = User as ClaimsPrincipal;
+            var userId = claimsPrincipal?.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return View(new ModuleDto()); // Returning an empty ModuleDto if no userId
+            }
+
+            List<ModuleDto> listmenu = new List<ModuleDto>();
+            var module = await _ModuleRepo.GetUserSideBarOnlyFormMenuByUserId(userId);
+            foreach (var item in module)
+            {
+                ModuleDto m = new ModuleDto
+                {
+                    ModuleName = item.ModuleName,
+                    ModuleUrl = item.ModuleUrl,
+                    ModuleIcon = item.ModuleIcon,
+                    ParentModuleId = item.ParentModuleId
+                };
+                listmenu.Add(m);
+            }
+
+            ModuleDto vm = new ModuleDto
+            {
+                MenuList = listmenu,
+                ModuleList = await _ModuleRepo.GetAllListAsync()
+            };
+            return View(vm);
+        }
+    }
+}
+

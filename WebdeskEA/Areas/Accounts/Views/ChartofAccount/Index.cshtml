@@ -1,0 +1,99 @@
+﻿@model List<COADto>
+<div class="page-header">
+    <div class="page-title">
+        <h4>@(ViewBag.NameOfForm)</h4>
+        <h6>Manage your @(ViewBag.NameOfForm)</h6>
+    </div>
+    <div class="page-btn">
+        <a class="btn btn-added" asp-action="Create"><img src="~/Template/img/icons/plus.svg" alt="img" class="me-1">Add New</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-top">
+            <div class="search-set">
+                <div class="search-path">
+                    <a class="btn btn-filter">
+                        <img src="~/Template/img/icons/filter.svg" alt="img">
+                    </a>
+                </div>
+                <div class="search-input">
+                    <a class="btn btn-searchset"><img src="~/Template/img/icons/search-white.svg" alt="img"></a>
+                </div>
+            </div>
+            <div class="wordset">
+                <ul>
+                    <li>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img src="~/Template/img/icons/pdf.svg" alt="img"></a>
+                    </li>
+                    <li>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img src="~/Template/img/icons/excel.svg" alt="img"></a>
+                    </li>
+                    <li>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img src="~/Template/img/icons/printer.svg" alt="img"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table  datanew">
+                <thead>
+                    <tr>
+                        <th>
+                            <label class="checkboxs">
+                                <input type="checkbox" id="select-all">
+                                <span class="checkmarks"></span>
+                            </label>
+                        </th>
+                        <th>Id</th>
+                        <th>COAType</th>
+                        <th>Name</th>
+                        <th>Code</th>
+                        <th>CoaCode</th>
+                        <th>BusinessCategory</th>
+                        <th>TransType</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="products">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <label class="checkboxs">
+                                    <input type="checkbox">
+                                    <span class="checkmarks"></span>
+                                </label>
+                            </td>
+                            <td class="productimgname">
+                                @* <a href="javascript:void(0);" class="product-img">
+                                    <img src="~/Template/img/product/product2.jpg" alt="product">
+                                </a> *@
+                                <a href="javascript:void(0);">@item.Id</a>
+                            </td>
+                            <td>@item.COATypeName</td>
+                            <td>@item.AccountName</td>
+                            <td>@item.Code</td>
+                            <td>@item.AccountCode</td>
+                            <td>@item.BusinessCategoryName</td>
+                            <td>@item.CoaTranType</td>
+                            <td>
+                                <a class="me-3" asp-action="Details" asp-route-id="@item.Id">
+                                    <img src="~/Template/img/icons/eye.svg" alt="img">
+                                </a>
+                                <a class="me-3" asp-action="Edit" asp-route-id="@item.Id">
+                                    <img src="~/Template/img/icons/edit.svg" alt="img">
+                                </a>
+                                <a class="me-3" asp-action="Delete" asp-route-id="@item.Id">
+                                    <img src="~/Template/img/icons/delete.svg" alt="img">
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

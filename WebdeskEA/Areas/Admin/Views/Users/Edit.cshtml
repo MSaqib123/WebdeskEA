@@ -1,0 +1,107 @@
+﻿@model ApplicationUserDto
+
+
+<!-- Page Header -->
+<div class="page-header">
+    <div class="row align-items-center">
+        <div class="col-sm mb-2 mb-sm-0">
+            @* <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-no-gutter">
+                    <li class="breadcrumb-item"><a class="breadcrumb-link" href="ecommerce-customers.html">Customers</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Add customers</li>
+                </ol>
+            </nav> *@
+            <h1 class="page-header-title">Update @ViewBag.NameOfForm</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            @*____ Hidden Properties ___*@
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ProfileImage" />
+
+            <!-- Body -->
+            <div class="card-body">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="mb-4">
+                                <label>Full Name</label>
+                                <input type="text" asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="mb-4">
+                                <label>User Name</label>
+                                <input type="text" asp-for="UserName" class="form-control" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="mb-4">
+                                <label class="form-label w-100" for="password">
+                                    <span class="d-flex justify-content-between align-items-center">
+                                        <span>Password</span>
+                                    </span>
+                                </label>
+
+                                <div class="input-group input-group-merge">
+                                    <input asp-for="Password" type="password" class="form-control form-control-lg js-toggle-password" placeholder="8+ characters required" minlength="8" data-hs-toggle-password-options='{
+                                    "target": "#changePassTarget",
+                                    "defaultClass": "bi-eye-slash",
+                                    "showClass": "bi-eye",
+                                    "classChangeTarget": "#changePassIcon"
+                                }' />
+                                    <a id="changePassTarget" class="input-group-append input-group-text" href="javascript:;">
+                                        <i id="changePassIcon" class="bi-eye"></i>
+                                    </a>
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="mb-4">
+                                <label>Phone</label>
+                                <input type="text" asp-for="PhoneNumber" class="form-control" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="mb-4">
+                                <label>Email</label>
+                                <input type="email" asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-4">
+                            <div class="mb-4">
+                                <label>User Image</label>
+                                <div class="image-upload">
+                                    <input type="file" asp-for="ProfileImage" class="form-control" />
+                                </div>
+                                <span asp-validation-for="ProfileImage" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-3">
+                        <a asp-action="Index" class="btn btn-white" id="bt">Cancel</a>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+     </div>
+</div>

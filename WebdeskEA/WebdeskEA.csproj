@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\Template\documentation\node_modules\chartjs-plugin-datalabels\dist\chartjs-plugin-datalabels.min.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Customers\Controllers\" />
+    <Folder Include="Areas\Customers\Views\" />
+    <Folder Include="Areas\RestApi\Controllers\" />
+    <Folder Include="Areas\RestApi\Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebdeskEA.Core\WebdeskEA.Core.csproj" />
+    <ProjectReference Include="..\WebdeskEA.DataAccess\WebdeskEA.DataAccess.csproj" />
+    <ProjectReference Include="..\WebdeskEA.Domain\WebdeskEA.Domain.csproj" />
+    <ProjectReference Include="..\WebdeskEA.Models\WebdeskEA.Models.csproj" />
+    <ProjectReference Include="..\WebdeskEA.Utility\WebdeskEA.Utility.csproj" />
+  </ItemGroup>
+
+</Project>
