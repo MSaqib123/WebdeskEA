@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebdeskEA.Models.DbModel;
+namespace WebdeskEA.Models.ExternalModel;
 public class ErrorLog
 {
     public int Id { get; set; }

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using WebdeskEA.DataAccess.DapperFactory;
 using WebdeskEA.Domain.RepositoryDapper.IRepository;
-using WebdeskEA.Models.DbModel;
 using WebdeskEA.Models.MappingModel;
 using Dapper;
 using System;
@@ -10,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebdeskEA.Models.ExternalModel;
 
 namespace WebdeskEA.Domain.RepositoryDapper;
 public class ErrorLogRepository : IErrorLogRepository

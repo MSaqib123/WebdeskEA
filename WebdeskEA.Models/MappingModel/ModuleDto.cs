@@ -43,5 +43,6 @@ namespace WebdeskEA.Models.MappingModel
 
         public IEnumerable<ModuleDto> ModuleList { get; set; }
         public IEnumerable<ModuleDto> MenuList { get; set; }
+
     }
 }
